@@ -1,0 +1,38 @@
+
+body {
+    background-color: #001f3f; 
+    color: #ffffff; 
+  }
+  
+  .banner-section {
+    background: linear-gradient(to left,rgba(4, 4, 18, 0.1),rgba(4, 4, 8, 0.1)), 
+                url('another.avif') ;
+    height: 800px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .categories-section {
+    background-color: #00274d; 
+    padding: 40px 0; 
+  }
+  
+  
+   
+  .category-card, .featured-card {
+    border-radius: 15px; 
+  }
+  
+  .category-card:hover, .featured-card:hover 
+  {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+  }
+  
+  h2 {
+    color: #ffffff; 
+    margin-bottom: 20px; 
+  }

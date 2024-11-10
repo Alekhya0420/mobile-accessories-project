@@ -1,0 +1,42 @@
+{
+  "registration": [
+    {
+      "id": "b89f",
+      "name": "suhs",
+      "email": "sush@gmail.com",
+      "password": "sush123#",
+      "carts": [],
+      "cartPrice": 0
+    },
+    {
+      "id": "b19f",
+      "name": "rahim",
+      "email": "rahim@gmail.com",
+      "password": "rahim23#",
+      "carts": [],
+      "cartPrice": 0
+    },
+    {
+      "id": "4e8c",
+      "name": "MR.Alekhya Roy",
+      "email": "alekhyaroy1111@gmail.com",
+      "password": "alexa23#",
+      "carts": [
+        {
+          "id": 1,
+          "dish": "iPhone 14 Pro",
+          "imgdata": "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/h/r/e/-original-imaghxeeme2n7hy7.jpeg?q=70&crop=false",
+          "address": "Smartphone, Apple",
+          "delimg": "https://example.com/delimg1.png",
+          "somedata": "1500 + orders placed from here recently",
+          "price": 999,
+          "rating": "4.8",
+          "arrimg": "https://example.com/arrimg1.png",
+          "qnty": 16,
+          "totalPrice": 15984
+        }
+      ],
+      "cartPrice": 15984
+    }
+  ]
+}
