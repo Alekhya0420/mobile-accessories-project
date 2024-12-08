@@ -12,7 +12,8 @@ console.log("my token", authToken);
 
 export const updateCartInDB = async (cartData) => {
   console.log("Updating cart data:", cartData);
-  try {
+  try 
+  {
     const response = await axios.patch(
       `${base_url}/${authToken}`,
       {
@@ -26,7 +27,10 @@ export const updateCartInDB = async (cartData) => {
       }
     );
     console.log("Update response:", response.data);
-  } catch (error) {
+  } 
+
+  catch(error)
+  {
     console.error("Failed to update cart data:", error);
   }
 };
@@ -47,7 +51,7 @@ const cartSlice = createSlice({
         state.carts[itemIndex].qnty += 1;
         state.carts[itemIndex].totalPrice = state.carts[itemIndex].price * state.carts[itemIndex].qnty;
       } else {
-        const temp = { ...action.payload, qnty: 1, totalPrice: action.payload.price };
+        const temp = {...action.payload, qnty: 1, totalPrice: action.payload.price};
         state.carts.push(temp);
       }
 
@@ -78,18 +82,21 @@ const cartSlice = createSlice({
     },
 
 
-    removeSingle: (state, action) => {
+    removeSingle: (state, action)=>
+    {
       const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
   
-      if (itemIndex >= 0) {
+      if(itemIndex>= 0)
+      {
           state.carts.splice(itemIndex, 1);
       }
   
-      state.cartPrice = state.carts.reduce((total, item) => total + (item.price * item.qnty), 0);
+      state.cartPrice = state.carts.reduce((total,item)=>total+(item.price * item.qnty),0);
   
-      if (state.carts.length === 0) {
-          state.carts = [];
-      }
+      // if(state.carts.length === 0)
+      // {
+      //     state.carts = [];
+      // }
       updateCartInDB(state); 
   },
   
@@ -97,7 +104,7 @@ const cartSlice = createSlice({
 });
 
 
-export const { addTocart, decrement, removeSingle, setCartData } = cartSlice.actions;
+export const {addTocart,decrement,removeSingle,setCartData} = cartSlice.actions;
 export default cartSlice.reducer;
 
 

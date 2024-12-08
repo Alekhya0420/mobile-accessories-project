@@ -4,6 +4,7 @@ import {base_url} from "../../api/api";
 import axios from "axios";
 
 
+
 export let LoginInfo=createAsyncThunk("auth/loginInfo",async(data)=>{
     let res=await axios.get(base_url,data);
     console.log(res?.data);
@@ -73,8 +74,9 @@ export const authSlice=createSlice({
             state.status = action.payload.status;  
             state.data = action.payload;
             console.log("fulfill is",action)
-         });
-        
+        });
+
+         
         builder.addCase(RegInfo.rejected, (state) => {
             state.isLoading = false;
         });
@@ -89,13 +91,12 @@ export const authSlice=createSlice({
             state.status = action.payload.status;  
             state.data2 = action.payload;
             console.log("fulfill is",action)
-         });
+        });
         
         builder.addCase( fetchDetails.rejected, (state) => {
             state.isLoading = false;
         });
-
-        //for resetting password
+        
         builder.addCase(resetPassword.pending, (state) => {
             state.isLoading = true;  
           });
@@ -108,11 +109,8 @@ export const authSlice=createSlice({
         });
         
         builder.addCase(resetPassword.rejected, (state) => {
-              state.isLoading = false;
-             
+              state.isLoading = false;       
         });
-
-
 
       },
 })

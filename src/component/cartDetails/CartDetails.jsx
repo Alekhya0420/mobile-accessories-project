@@ -35,16 +35,19 @@ const CartDetails = () => {
 
     const handleAddToCart = (data) => {
         dispatch(addTocart(data));
-        updateCartInDB({ carts, cartPrice }); 
+        updateCartInDB({carts,cartPrice}); 
     };
 
     const handleDecrement = (data) => {
         const existingItem = carts.find(item => item.id === data.id);
 
-        if (existingItem && existingItem.qnty > 1) {
+        if (existingItem && existingItem.qnty > 1)
+        {
             dispatch(decrement(data));
-            updateCartInDB({ carts, cartPrice }); 
-        } else {
+            updateCartInDB({carts,cartPrice}); 
+        } 
+        else
+        {
             handleRemoveItem(data);
         }
     };
@@ -57,10 +60,17 @@ const CartDetails = () => {
             carts: carts.filter((item) => item.id !== data.id), 
             cartPrice: carts
                 .filter((item) => item.id !== data.id)
-                .reduce((total, item) => total + item.totalPrice, 0), 
+               .reduce((total, item) => total + item.totalPrice,0), 
         }
     );
     };
+ 
+    // let handleRemoveItem = (data)=>{
+    //     dispatch(removeSingle(data));
+    //     updateCartInDB({carts,cartPrice})
+    // }
+
+
     console.log("cartprice is",cartPrice);
     
 

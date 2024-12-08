@@ -5,8 +5,35 @@
       "name": "suhs",
       "email": "sush@gmail.com",
       "password": "sush123#",
-      "carts": [],
-      "cartPrice": 0
+      "carts": [
+        {
+          "id": 3,
+          "dish": "Apple Watch",
+          "imgdata": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202409?wid=400&hei=260&fmt=png-alpha&.v=1724165625838",
+          "address": "Smartwatch, Apple",
+          "delimg": "https://example.com/delimg3.png",
+          "somedata": "1000 + orders placed from here recently",
+          "price": 749,
+          "rating": "4.5",
+          "arrimg": "https://example.com/arrimg3.png",
+          "qnty": 2,
+          "totalPrice": 1498
+        },
+        {
+          "id": 2,
+          "dish": "Samsung Galaxy S24 Fe",
+          "imgdata": "https://images.samsung.com/is/image/samsung/p6pim/in/feature/165609164/in-feature--nbsp-543530332?$FB_TYPE_K_JPG$",
+          "address": "Smartphone, Samsung",
+          "delimg": "https://example.com/delimg2.png",
+          "somedata": "2000 + orders placed from here recently",
+          "price": 799,
+          "rating": "4.7",
+          "arrimg": "https://example.com/arrimg2.png",
+          "qnty": 1,
+          "totalPrice": 799
+        }
+      ],
+      "cartPrice": 2297
     },
     {
       "id": "b19f",
