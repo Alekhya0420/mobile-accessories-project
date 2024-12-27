@@ -1,27 +1,58 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Fetch from '../component/fetchDetails/Fetch';
+import {setCartData} from '../redux/slice/cartSlice';
+import {useDispatch} from 'react-redux';
+
 
 function Header() {
-  const { carts } = useSelector((state) => state.allCart);
-  const navigate = useNavigate();
-
   
-
-  const quantities = carts.map((item) => item.qnty);
-  const totalQuantity = quantities.reduce((total, qnty) => total + qnty, 0);
-
+  
+  const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(0);
+  const {carts,cartPrice} = useSelector((state) => state.allCart);
+  const dispatch = useDispatch();
+  const authToken = sessionStorage.getItem("authToken");
+    
   
   const logOut = () => {
     sessionStorage.clear();
     navigate('login');
   };
 
+  useEffect(() => {
+    const fetchCartData = async () => {
+        if (!authToken) return;
+
+        try {
+            const response = await axios.get(`http://localhost:5000/registration/${authToken}`);
+            const userData = response.data;
+            dispatch(setCartData({
+                carts: userData.carts || [],
+                cartPrice: userData.cartPrice || 0,
+            }));
+        } catch (error) {
+            console.error("Error fetching cart data:", error);
+        }
+    };
+
+    fetchCartData();
+}, [authToken, dispatch]);
   
-  const authToken = sessionStorage.getItem("authToken");
+const calculateTotalQuantity = () => {
+  const totalQuantity = carts.reduce((total, item) => total + item.qnty, 0);
+  setQuantity(totalQuantity);
+};
+
+useEffect(() => {
+  calculateTotalQuantity();
+}, [carts]);
+  
+
 
   return (
     <Navbar expand="lg" className="navbar bg-light sm-shadow" fixed="top">
@@ -31,9 +62,7 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
 
-            <Nav.Link as={Link} to="">Home</Nav.Link>
-
-          
+            <Nav.Link as={Link} to="">Home</Nav.Link>     
             
             {!authToken && (
               <>
@@ -46,9 +75,11 @@ function Header() {
             
             {authToken && (
             <Nav.Link as={Link} to="cart">
-              🛒 <span className="badge bg-light text-dark">{totalQuantity}</span>
+              Cart({quantity})<span className="badge bg-light text-dark"></span>
             </Nav.Link>
             )}
+
+            
 
            
             {authToken && (
@@ -71,3 +102,4 @@ function Header() {
 }
 
 export default Header;
+

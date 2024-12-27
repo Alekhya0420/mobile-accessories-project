@@ -7,30 +7,24 @@ const initialState = {
   cartPrice: 0,
 };
 
-const authToken = sessionStorage.getItem("authToken");
-console.log("my token", authToken);
-
+// Async function to update cart in DB
 export const updateCartInDB = async (cartData) => {
-  console.log("Updating cart data:", cartData);
-  try 
-  {
-    const response = await axios.patch(
+  const authToken = sessionStorage.getItem("authToken");
+
+  if (!authToken) {
+    console.error("No auth token found. Cannot update cart data.");
+    return;
+  }
+
+  try {
+    await axios.patch(
       `${base_url}/${authToken}`,
       {
         carts: cartData.carts,
         cartPrice: cartData.cartPrice,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
     );
-    console.log("Update response:", response.data);
-  } 
-
-  catch(error)
-  {
+  } catch (error) {
     console.error("Failed to update cart data:", error);
   }
 };
@@ -51,19 +45,17 @@ const cartSlice = createSlice({
         state.carts[itemIndex].qnty += 1;
         state.carts[itemIndex].totalPrice = state.carts[itemIndex].price * state.carts[itemIndex].qnty;
       } else {
-        const temp = {...action.payload, qnty: 1, totalPrice: action.payload.price};
+        const temp = { ...action.payload, qnty: 1, totalPrice: action.payload.price };
         state.carts.push(temp);
       }
 
       state.cartPrice = state.carts.reduce((total, item) => total + item.totalPrice, 0);
-      updateCartInDB(state);
+      updateCartInDB(state); // Keep the backend synchronized
     },
-
-
 
     decrement: (state, action) => {
       const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
-    
+
       if (itemIndex >= 0) {
         if (state.carts[itemIndex].qnty > 1) {
           state.carts[itemIndex].qnty -= 1;
@@ -72,39 +64,23 @@ const cartSlice = createSlice({
           state.carts.splice(itemIndex, 1);
         }
       }
-    
+
       state.cartPrice = state.carts.reduce((total, item) => total + item.totalPrice, 0);
-      if (state.carts.length === 0) {
-        state.carts = [];
-      }
-    
-      updateCartInDB(state); 
+      updateCartInDB(state); // Keep the backend synchronized
     },
 
-
-    removeSingle: (state, action)=>
-    {
+    removeSingle: (state, action) => {
       const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
-  
-      if(itemIndex>= 0)
-      {
-          state.carts.splice(itemIndex, 1);
+
+      if (itemIndex >= 0) {
+        state.carts.splice(itemIndex, 1);
       }
-  
-      state.cartPrice = state.carts.reduce((total,item)=>total+(item.price * item.qnty),0);
-  
-      // if(state.carts.length === 0)
-      // {
-      //     state.carts = [];
-      // }
-      updateCartInDB(state); 
-  },
-  
+
+      state.cartPrice = state.carts.reduce((total, item) => total + (item.price * item.qnty), 0);
+      updateCartInDB(state); // Keep the backend synchronized
+    },
   },
 });
 
-
-export const {addTocart,decrement,removeSingle,setCartData} = cartSlice.actions;
+export const { addTocart, decrement, removeSingle, setCartData } = cartSlice.actions;
 export default cartSlice.reducer;
-
-

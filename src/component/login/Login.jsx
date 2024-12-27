@@ -83,6 +83,12 @@ function Login() {
                             Login
                         </Button>
 
+                        <div className="text-center mt-3">
+                                <Link to="/reset" style={{ textDecoration: 'none', color: '#1976d2', fontWeight: 'bold' }}>
+                                    Already have an account? Login
+                                </Link>
+                        </div>
+
                        
                     </Form>
               
@@ -92,3 +98,5 @@ function Login() {
 }
 
 export default Login;
+
+

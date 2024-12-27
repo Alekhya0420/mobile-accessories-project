@@ -23,27 +23,7 @@ function Home() {
         </Row>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-5 categories-section text-center" style={{ backgroundColor: "#001F33" }}>
-        <Container>
-          <h2 className="fw-bold text-info fs-1 fst-italic">Shop</h2>
-          <Row className="mt-4">
-            {['Smartphones', 'Accessories', 'Wearables'].map((category, index) => (
-              <Col xs={12} sm={6} md={4} className="mb-4" key={index}>
-                <Card className="category-card shadow-lg font-weight-bold fs-5" style={{ backgroundColor: '#003366', color: 'white' }}>
-                  <Card.Img variant="top" src={index === 0 ? phone : index === 1 ? parts : headset} style={{ height: '200px', objectFit: 'cover' }} />
-                  <Card.Body>
-                    <Card.Title className='text-info'>{category}</Card.Title>
-                    <Card.Text>
-                      {`Discover the latest ${category.toLowerCase()} from top brands.`}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      
 
       {/* Featured Phones Section */}
       <section className="py-5 text-center" style={{ backgroundColor: '#6082B6' }}>

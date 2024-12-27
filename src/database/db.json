@@ -4,21 +4,8 @@
       "id": "b89f",
       "name": "suhs",
       "email": "sush@gmail.com",
-      "password": "sush123#",
+      "password": "sush125#",
       "carts": [
-        {
-          "id": 3,
-          "dish": "Apple Watch",
-          "imgdata": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202409?wid=400&hei=260&fmt=png-alpha&.v=1724165625838",
-          "address": "Smartwatch, Apple",
-          "delimg": "https://example.com/delimg3.png",
-          "somedata": "1000 + orders placed from here recently",
-          "price": 749,
-          "rating": "4.5",
-          "arrimg": "https://example.com/arrimg3.png",
-          "qnty": 2,
-          "totalPrice": 1498
-        },
         {
           "id": 2,
           "dish": "Samsung Galaxy S24 Fe",
@@ -33,21 +20,13 @@
           "totalPrice": 799
         }
       ],
-      "cartPrice": 2297
+      "cartPrice": 799
     },
     {
       "id": "b19f",
       "name": "rahim",
       "email": "rahim@gmail.com",
       "password": "rahim23#",
-      "carts": [],
-      "cartPrice": 0
-    },
-    {
-      "id": "4e8c",
-      "name": "MR.Alekhya Roy",
-      "email": "alekhyaroy1111@gmail.com",
-      "password": "alexa23#",
       "carts": [
         {
           "id": 1,
@@ -59,11 +38,103 @@
           "price": 999,
           "rating": "4.8",
           "arrimg": "https://example.com/arrimg1.png",
-          "qnty": 16,
-          "totalPrice": 15984
+          "qnty": 5,
+          "totalPrice": 4995
         }
       ],
-      "cartPrice": 15984
+      "cartPrice": 4995
+    },
+    {
+      "id": "e030",
+      "name": "Raghunath Bose",
+      "email": "raghunath@gmail.com",
+      "password": "raghu123#",
+      "carts": [
+        {
+          "id": 2,
+          "dish": "Samsung Galaxy S24 Fe",
+          "imgdata": "https://images.samsung.com/is/image/samsung/p6pim/in/feature/165609164/in-feature--nbsp-543530332?$FB_TYPE_K_JPG$",
+          "address": "Smartphone, Samsung",
+          "delimg": "https://example.com/delimg2.png",
+          "somedata": "2000 + orders placed from here recently",
+          "price": 799,
+          "rating": "4.7",
+          "arrimg": "https://example.com/arrimg2.png",
+          "qnty": 7,
+          "totalPrice": 5593
+        }
+      ],
+      "cartPrice": 5593
+    },
+    {
+      "id": "f165",
+      "name": "Randip Das",
+      "email": "randip@gmail.com",
+      "password": "randip456#",
+      "carts": [
+        {
+          "id": 1,
+          "dish": "iPhone 14 Pro",
+          "imgdata": "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/h/r/e/-original-imaghxeeme2n7hy7.jpeg?q=70&crop=false",
+          "address": "Smartphone, Apple",
+          "delimg": "https://example.com/delimg1.png",
+          "somedata": "1500 + orders placed from here recently",
+          "price": 999,
+          "rating": "4.8",
+          "arrimg": "https://example.com/arrimg1.png",
+          "qnty": 4,
+          "totalPrice": 3996
+        },
+        {
+          "id": 2,
+          "dish": "Samsung Galaxy S24 Fe",
+          "imgdata": "https://images.samsung.com/is/image/samsung/p6pim/in/feature/165609164/in-feature--nbsp-543530332?$FB_TYPE_K_JPG$",
+          "address": "Smartphone, Samsung",
+          "delimg": "https://example.com/delimg2.png",
+          "somedata": "2000 + orders placed from here recently",
+          "price": 799,
+          "rating": "4.7",
+          "arrimg": "https://example.com/arrimg2.png",
+          "qnty": 2,
+          "totalPrice": 1598
+        },
+        {
+          "id": 5,
+          "dish": "AirPods",
+          "imgdata": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-airpods-nav-202409?wid=400&hei=260&fmt=png-alpha&.v=1722974349822",
+          "address": "Wireless Earbuds, Apple",
+          "delimg": "https://example.com/delimg5.png",
+          "somedata": "800 + orders placed from here recently",
+          "price": 329,
+          "rating": "4.7",
+          "arrimg": "https://example.com/arrimg5.png",
+          "qnty": 1,
+          "totalPrice": 329
+        }
+      ],
+      "cartPrice": 5923
+    },
+    {
+      "id": "9135",
+      "name": "Nabin Roy",
+      "email": "nabin@gmail.com",
+      "password": "nabin123#",
+      "carts": [
+        {
+          "id": 2,
+          "dish": "Samsung Galaxy S24 Fe",
+          "imgdata": "https://images.samsung.com/is/image/samsung/p6pim/in/feature/165609164/in-feature--nbsp-543530332?$FB_TYPE_K_JPG$",
+          "address": "Smartphone, Samsung",
+          "delimg": "https://example.com/delimg2.png",
+          "somedata": "2000 + orders placed from here recently",
+          "price": 799,
+          "rating": "4.7",
+          "arrimg": "https://example.com/arrimg2.png",
+          "qnty": 2,
+          "totalPrice": 1598
+        }
+      ],
+      "cartPrice": 1598
     }
   ]
 }

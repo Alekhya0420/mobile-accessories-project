@@ -7,6 +7,7 @@ import Login from '../component/login/Login'
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Home from '../component/home/Home'
 import Contact from '../component/contact/Contact'
+import Reset from '../component/reset/Reset'
 import Footer from '../layout/Footer'
 
 
@@ -21,6 +22,7 @@ function Routing() {
                 <Route path="products" element={<Product/>}/>
                 <Route path="cart" element={<CartDetails/>}/>
                 <Route path="register" element={<Registration/>}/>
+                <Route path="reset" element={<Reset/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="contact" element={<Contact/>}/>
               </Routes>

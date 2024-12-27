@@ -13,8 +13,10 @@ const Fetch = () => {
     }, [token, dispatch]);
 
     
-    const userdata = useSelector((state) => state.allauth.data2); 
+    const userdata = useSelector((state) => state.allauth.data); 
     console.log("Fetched data:", userdata);
+
+   
 
   return (
     <div>

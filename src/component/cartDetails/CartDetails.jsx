@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTocart, decrement, removeSingle,setCartData } from '../../redux/slice/cartSlice';
-import { updateCartInDB } from '../../redux/slice/cartSlice'; 
+import { addTocart, decrement, removeSingle, setCartData } from '../../redux/slice/cartSlice';
 import { Container, Table, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const CartDetails = () => {
-    const [quantity, setQuantity] = useState("");
-    const { carts, cartPrice } = useSelector((state) => state.allCart);
+    const [quantity, setQuantity] = useState(0);
+    const {carts,cartPrice} = useSelector((state) => state.allCart);
     const dispatch = useDispatch();
     const authToken = sessionStorage.getItem("authToken");
 
@@ -23,7 +22,7 @@ const CartDetails = () => {
 
                 dispatch(setCartData({
                     carts: userData.carts || [],
-                    cartPrice: userData.cartPrice || 0
+                    cartPrice: userData.cartPrice || 0,
                 }));
             } catch (error) {
                 console.error("Error fetching cart data:", error);
@@ -33,49 +32,22 @@ const CartDetails = () => {
         fetchCartData();
     }, [authToken, dispatch]);
 
+    // Handle adding item to cart
     const handleAddToCart = (data) => {
-        dispatch(addTocart(data));
-        updateCartInDB({carts,cartPrice}); 
+        dispatch(addTocart(data)); 
     };
 
+    // Handle decrementing item quantity in the cart
     const handleDecrement = (data) => {
-        const existingItem = carts.find(item => item.id === data.id);
-
-        if (existingItem && existingItem.qnty > 1)
-        {
-            dispatch(decrement(data));
-            updateCartInDB({carts,cartPrice}); 
-        } 
-        else
-        {
-            handleRemoveItem(data);
-        }
+        dispatch(decrement(data)); // Update Redux state
     };
 
-
+    // Handle removing item from the cart
     const handleRemoveItem = (data) => {
-        dispatch(removeSingle(data));
-      
-        updateCartInDB({
-            carts: carts.filter((item) => item.id !== data.id), 
-            cartPrice: carts
-                .filter((item) => item.id !== data.id)
-               .reduce((total, item) => total + item.totalPrice,0), 
-        }
-    );
+        dispatch(removeSingle(data)); // Update Redux state
     };
- 
-    // let handleRemoveItem = (data)=>{
-    //     dispatch(removeSingle(data));
-    //     updateCartInDB({carts,cartPrice})
-    // }
 
-
-    console.log("cartprice is",cartPrice);
-    
-
-   
-
+    // Calculate total quantity of items in the cart
     const calculateTotalQuantity = () => {
         const totalQuantity = carts.reduce((total, item) => total + item.qnty, 0);
         setQuantity(totalQuantity);
@@ -92,7 +64,7 @@ const CartDetails = () => {
             {quantity > 0 && (
                 <div className="mb-4 shadow-sm p-3 bg-light rounded">
                     <p className='text-primary fs-3'>Total Quantity: {quantity}</p>
-                    <h5 className='text-primary fs-3'>Total Price: ${cartPrice.toFixed(2)}</h5>                 
+                    <h5 className='text-primary fs-3'>Total Price: ${cartPrice.toFixed(2)}</h5>
                 </div>
             )}
 
@@ -134,7 +106,7 @@ const CartDetails = () => {
                     </tbody>
                 </Table>
             ) : (
-                <div className="text-center my-5 p-4 border rounded shadow bg-light" style={{ maxWidth: '400px', margin: 'auto',height:"240px" }}>
+                <div className="text-center my-5 p-4 border rounded shadow bg-light" style={{ maxWidth: '400px', margin: 'auto', height: "240px" }}>
                     <h3 className="text-danger mb-3">Your Cart is Empty</h3>
                     <p className="text-muted">No items in your cart.</p>
                     <p className="text-muted">Start adding some!</p>
@@ -148,6 +120,3 @@ const CartDetails = () => {
 };
 
 export default CartDetails;
-
-
-

@@ -42,7 +42,6 @@ export const authSlice=createSlice({
         isLoading: false,
         status: 0,
         data: [],
-        data2:[],
         isLoggedIn: false,
     },
 
@@ -89,7 +88,7 @@ export const authSlice=createSlice({
         builder.addCase( fetchDetails.fulfilled, (state, action) => {
             state.isLoading = false;
             state.status = action.payload.status;  
-            state.data2 = action.payload;
+            state.data = action.payload;
             console.log("fulfill is",action)
         });
         
